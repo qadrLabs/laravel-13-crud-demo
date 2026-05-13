@@ -1,58 +1,161 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel 13 CRUD Demo — Simple Blog
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A demo project for the tutorial **Laravel 13 CRUD: Build a Simple Blog Step by Step**.
 
-## About Laravel
+📖 **Read the full tutorial at:** [qadrlabs.com/post/laravel-13-crud-tutorial-build-a-simple-blog-step-by-step](https://qadrlabs.com/post/laravel-13-crud-tutorial-build-a-simple-blog-step-by-step)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## About This Project
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This is a simple blog application built with **Laravel 13** to demonstrate CRUD (Create, Read, Update, Delete) operations. It is designed for beginners who want to learn the fundamentals of web development with Laravel.
 
-## Learning Laravel
+### Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ✅ List all posts (Read)
+- ✅ Create a new post (Create)
+- ✅ View post detail (Read)
+- ✅ Edit a post (Update)
+- ✅ Delete a post (Delete)
+- ✅ Post status: `draft` / `publish`
+- ✅ Auto-generated slug from post title
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Tech Stack
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+| Technology | Version |
+|------------|---------|
+| PHP | ^8.3 |
+| Laravel | ^13.0 |
+| Database | MySQL |
+| Vite | (Frontend bundler) |
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Requirements
+
+Before getting started, make sure you have the following installed:
+
+- **PHP** >= 8.3
+- **Composer** >= 2.x
+- **Node.js** >= 18.x & **npm**
+- **MySQL** >= 5.7 or MariaDB >= 10.3
+
+---
+
+## Setup Steps
+
+### 1. Clone the Repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/qadrLabs/laravel-13-crud-demo.git
+cd laravel-13-crud-demo
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install PHP Dependencies
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Copy the Environment File
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 4. Generate Application Key
 
-## Security Vulnerabilities
+```bash
+php artisan key:generate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 5. Configure the Database
+
+Open your `.env` file and update the database credentials:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+> Make sure the MySQL database already exists before running the migration.
+
+### 6. Run Database Migration
+
+```bash
+php artisan migrate
+```
+
+### 7. Install JavaScript Dependencies
+
+```bash
+npm install
+```
+
+### 8. Build Frontend Assets
+
+```bash
+npm run build
+```
+
+### 9. Start the Development Server
+
+```bash
+php artisan serve
+```
+
+Or run all services at once (server, queue, logs, vite) using:
+
+```bash
+composer dev
+```
+
+The application will be available at: **http://localhost:8000**
+
+---
+
+## Running Tests
+
+```bash
+composer test
+```
+
+---
+
+## Project Structure
+
+```
+laravel-13-crud-demo/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       └── PostController.php   # CRUD Controller for Post
+│   └── Models/
+│       └── Post.php                 # Post Model
+├── database/
+│   └── migrations/
+│       └── ..._create_posts_table.php  # Posts table schema
+├── resources/
+│   └── views/                       # Blade templates
+├── routes/
+│   └── web.php                      # Application routes
+└── .env.example                     # Example environment configuration
+```
+
+---
+
+## References
+
+- 📖 [Full Tutorial](https://qadrlabs.com/post/laravel-13-crud-tutorial-build-a-simple-blog-step-by-step)
+- 🐙 [GitHub Repository](https://github.com/qadrLabs/laravel-13-crud-demo)
+- 📦 [Laravel Documentation](https://laravel.com/docs/13.x)
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced under the [MIT License](https://opensource.org/licenses/MIT).
