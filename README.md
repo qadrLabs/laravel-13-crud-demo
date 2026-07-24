@@ -93,7 +93,7 @@ php artisan migrate
 ### 7. Install JavaScript Dependencies
 
 ```bash
-npm install
+npm install --ignore-scripts
 ```
 
 ### 8. Build Frontend Assets
